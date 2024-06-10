@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="org.swu.pokedex0528.model.PokemonDetail" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="32dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Height"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/tvHeightValue"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@{Integer.valueOf(data.height).toString()}"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/tvHeight"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="-" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Height"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/tvWeightValue"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/tvHeightValue"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWeightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="@{Integer.valueOf(data.weight).toString()}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvWeight"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="-" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBaseExp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Base EXP"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvHeight"
+                app:layout_constraintTop_toBottomOf="@id/tvHeight" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBaseExpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.valueOf(data.baseExp).toString()}"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvBaseExp"
+                app:layout_constraintStart_toStartOf="@id/tvHeightValue"
+                app:layout_constraintTop_toBottomOf="@id/tvHeightValue"
+                tools:text="-" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Type"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvBaseExp"
+                app:layout_constraintTop_toBottomOf="@id/tvBaseExp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTypeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                app:layout_constraintBaseline_toBaselineOf="@id/tvType"
+                app:layout_constraintStart_toStartOf="@id/tvBaseExpValue"
+                app:layout_constraintTop_toBottomOf="@id/tvBaseExpValue"
+                tools:text="-" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Status"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvType"
+                app:layout_constraintTop_toBottomOf="@id/tvType" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tvStatusSa"
+                app:layout_constraintTop_toTopOf="@id/tvStatusHp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusHp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Hp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvStatus"
+                app:layout_constraintTop_toBottomOf="@id/tvStatus" />
+            <ProgressBar
+                android:id="@+id/progressStatusHp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusHp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusHp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusHpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusHp"
+                app:layout_constraintStart_toStartOf="@id/progressStatusHp"
+                app:layout_constraintTop_toTopOf="@id/progressStatusHp"
+                tools:text="-" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusAtk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Attack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvStatusHp"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusHp" />
+
+
+            <ProgressBar
+                android:id="@+id/progressStatusAtk"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusAtk"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusAtk" />
+            <ProgressBar
+                android:id="@+id/progressStatusSa"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusSa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusSa" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSaValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusSa"
+                app:layout_constraintStart_toStartOf="@id/progressStatusSa"
+                app:layout_constraintTop_toTopOf="@id/progressStatusSa"
+                tools:text="-" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Special Defence"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvStatusSa"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusSa" />
+
+            <ProgressBar
+                android:id="@+id/progressStatusSd"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusSd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusSd" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusAtkValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusAtk"
+                app:layout_constraintStart_toStartOf="@id/progressStatusAtk"
+                app:layout_constraintTop_toTopOf="@id/progressStatusAtk"
+                tools:text="-" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusDef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Defence"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvStatusAtk"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusAtk" />
+
+            <ProgressBar
+                android:id="@+id/progressStatusDef"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusDef"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusDef" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusDefValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusDef"
+                app:layout_constraintStart_toStartOf="@id/progressStatusDef"
+                app:layout_constraintTop_toTopOf="@id/progressStatusDef"
+                tools:text="-" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Special Attack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/barrier"
+                app:layout_constraintStart_toStartOf="@id/tvStatusDef"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusDef" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusSd"
+                app:layout_constraintStart_toStartOf="@id/progressStatusSd"
+                app:layout_constraintTop_toTopOf="@id/progressStatusSd"
+                tools:text="-" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="Speed"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/tvStatusSd"
+                app:layout_constraintTop_toBottomOf="@id/tvStatusSd" />
+
+            <ProgressBar
+                android:id="@+id/progressStatusSp"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="16dp"
+                android:max="200"
+                tools:progress="100"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvStatusSp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/barrier"
+                app:layout_constraintTop_toTopOf="@id/tvStatusSp" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatusSpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/progressStatusSp"
+                app:layout_constraintStart_toStartOf="@id/progressStatusSp"
+                app:layout_constraintTop_toTopOf="@id/progressStatusSp"
+                tools:text="-" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>
+
+
+
+
